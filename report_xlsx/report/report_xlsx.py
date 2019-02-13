@@ -18,15 +18,15 @@ except ImportError:
 
 class ReportXlsx(report_sxw):
 
-    def create(self, cr, uid, ids, data, context=None):
-        self.env = Environment(cr, uid, context)
+    def create(self,  ids, data, context=None):
+        self.env = Environment( context)
         report_obj = self.env['ir.actions.report.xml']
         report = report_obj.search([('report_name', '=', self.name[7:])])
         if report.ids:
             self.title = report.name
             if report.report_type == 'xlsx':
                 return self.create_xlsx_report(ids, data, report)
-        return super(ReportXlsx, self).create(cr, uid, ids, data, context)
+        return super(ReportXlsx, self).create( ids, data, context)
 
     def create_xlsx_report(self, ids, data, report):
         self.parser_instance = self.parser(

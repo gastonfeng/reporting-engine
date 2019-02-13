@@ -58,7 +58,7 @@ def assemble_pdf(pdf_list):
 class PDFReportAssembler(report_sxw.report_sxw):
     """ PDFReportAssembler allows to put 2 pdf reports in one single pdf"""
 
-    def _generate_all_pdf(self, cr, uid, ids, data, report_ids, context=None):
+    def _generate_all_pdf(self,  ids, data, report_ids, context=None):
         """
         Return a list of pdf encoded in base64
         """
@@ -68,7 +68,7 @@ class PDFReportAssembler(report_sxw.report_sxw):
         spool = ExportService._services['report']
 
         pdf_reports = []
-        report_list = report_obj.browse(cr, uid, report_ids, context=context)
+        report_list = report_obj.browse( report_ids, context=context)
         for report in report_list:
 
             report_key = spool.exp_report(cr.dbname, uid, report.report_name,
@@ -82,28 +82,28 @@ class PDFReportAssembler(report_sxw.report_sxw):
             pdf_reports.append(pdf)
         return pdf_reports
 
-    def _get_report_ids(self, cr, uid, ids, context=None):
+    def _get_report_ids(self,  ids, context=None):
         """
         Hook to define the list of report to print
         """
         return []
 
-    def create_single_pdf(self, cr, uid, ids, data, report_xml, context=None):
+    def create_single_pdf(self,  ids, data, report_xml, context=None):
         """Call both report to assemble both pdf"""
 
-        report_ids = self._get_report_ids(cr, uid, ids, context=context)
+        report_ids = self._get_report_ids( ids, context=context)
 
-        pdf_reports = self._generate_all_pdf(cr, uid, ids, data, report_ids, context=context)
+        pdf_reports = self._generate_all_pdf( ids, data, report_ids, context=context)
 
         pdf_assemblage = assemble_pdf(pdf_reports)
         return pdf_assemblage, 'pdf'
 
-    def create(self, cr, uid, ids, data, context=None):
+    def create(self,  ids, data, context=None):
         """We override the create function in order to handle generator
            Code taken from report openoffice. Thanks guys :) """
         pool = pooler.get_pool(cr.dbname)
         ir_obj = pool.get('ir.actions.report.xml')
-        report_xml_ids = ir_obj.search(cr, uid,
+        report_xml_ids = ir_obj.search(
                 [('report_name', '=', self.name[7:])], context=context)
         if report_xml_ids:
 
@@ -117,10 +117,10 @@ class PDFReportAssembler(report_sxw.report_sxw):
             report_xml.report_sxw_content = None
             report_xml.report_sxw = None
         else:
-            return super(PDFReportAssembler, self).create(cr, uid, ids, data, context)
+            return super(PDFReportAssembler, self).create( ids, data, context)
         if report_xml.report_type != 'assemblage':
-            return super(PDFReportAssembler, self).create(cr, uid, ids, data, context)
-        result = self.create_source_pdf(cr, uid, ids, data, report_xml, context)
+            return super(PDFReportAssembler, self).create( ids, data, context)
+        result = self.create_source_pdf( ids, data, report_xml, context)
         if not result:
             return (False, False)
         return result

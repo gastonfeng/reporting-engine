@@ -85,11 +85,11 @@ class ReportAssembleXML(orm.Model):
                 vals['model'])
         return res
 
-    def write(self, cr, uid, ids, vals, context=None):
+    def write(self,  ids, vals, context=None):
         """ Edit report and manage its registration """
         if isinstance(ids, (int, long)):
             ids = [ids]
-        for rep in self.browse(cr, uid, ids, context=context):
+        for rep in self.browse( ids, context=context):
             if rep.report_type != 'assemblage':
                 continue
             if (vals.get('report_name', False)
@@ -103,7 +103,7 @@ class ReportAssembleXML(orm.Model):
                 vals.get('model', rep.model),
                 False
                 )
-        res = super(ReportAssembleXML, self).write(cr, uid, ids, vals, context)
+        res = super(ReportAssembleXML, self).write( ids, vals, context)
         return res
 
 

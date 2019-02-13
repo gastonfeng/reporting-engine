@@ -15,13 +15,13 @@ from odoo.exceptions import UserError
 class AbstractReportXlsx(ReportXlsx):
 
     # pylint: disable=old-api7-method-defined
-    def create(self, cr, uid, ids, data, context=None):
+    def create(self,  ids, data, context=None):
         if context.get('xlsx_export'):
-            self.env = api.Environment(cr, uid, context)
+            self.env = api.Environment( context)
             return self.create_xlsx_report(ids, data, None)
         else:
             return super(AbstractReportXlsx, self).create(
-                cr, uid, ids, data, context=context)
+                 ids, data, context=context)
 
     def generate_xlsx_report(self, workbook, data, objects):
         self._define_formats(workbook)
