@@ -2,12 +2,13 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 
-from io import BytesIO
-import os
-from contextlib import closing
 import logging
+import os
 import tempfile
+from contextlib import closing
+from io import BytesIO
 from subprocess import Popen, PIPE
+
 from odoo import api, models, tools
 
 _logger = logging.getLogger(__name__)

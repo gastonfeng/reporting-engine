@@ -1,7 +1,7 @@
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-from odoo.tools.safe_eval import safe_eval
 from odoo import api, fields, models
+from odoo.tools.safe_eval import safe_eval
 
 
 class IrActionsReport(models.Model):

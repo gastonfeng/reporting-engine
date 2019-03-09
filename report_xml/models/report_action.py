@@ -4,8 +4,9 @@
 
 import logging
 
-from odoo import api, fields, models
 from lxml import etree
+
+from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 

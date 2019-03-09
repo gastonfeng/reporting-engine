@@ -3,11 +3,11 @@
 
 import json
 
+from odoo.addons.base_sparse_field.models.fields import Serialized
+
 from odoo import api, fields, models, tools
 from odoo.exceptions import UserError
 from odoo.tools.translate import _
-
-from odoo.addons.base_sparse_field.models.fields import Serialized
 
 
 class BveView(models.Model):

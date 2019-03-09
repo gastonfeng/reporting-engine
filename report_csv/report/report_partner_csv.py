@@ -1,6 +1,7 @@
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 import csv
+
 from odoo import models
 
 

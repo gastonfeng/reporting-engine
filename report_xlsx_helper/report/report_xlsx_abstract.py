@@ -1,9 +1,10 @@
 # Copyright 2009-2018 Noviat.
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from datetime import datetime
 import re
+from datetime import datetime
 from types import CodeType
+
 from xlsxwriter.utility import xl_rowcol_to_cell
 
 from odoo import fields, models, _

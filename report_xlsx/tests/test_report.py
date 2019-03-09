@@ -1,8 +1,10 @@
 # Copyright 2017 Creu Blanca
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo.tests import common
 import logging
+
+from odoo.tests import common
+
 _logger = logging.getLogger(__name__)
 
 try:

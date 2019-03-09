@@ -1,10 +1,11 @@
 # Copyright (C) 2017 Creu Blanca
 # License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl.html).
 
-from odoo.addons.web.controllers import main as report
-from odoo.http import content_disposition, route, request
-
 import json
+
+from odoo.addons.web.controllers import main as report
+
+from odoo.http import content_disposition, route, request
 
 
 class ReportController(report.ReportController):

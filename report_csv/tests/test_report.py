@@ -1,8 +1,10 @@
 # Copyright 2019 Creu Blanca
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-from io import StringIO
-from odoo.tests import common
 import logging
+from io import StringIO
+
+from odoo.tests import common
+
 _logger = logging.getLogger(__name__)
 try:
     import csv

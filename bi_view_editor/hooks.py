@@ -5,7 +5,6 @@ import logging
 
 from odoo import SUPERUSER_ID
 from odoo import api, modules
-
 from odoo.tools import existing_tables, topological_sort
 
 _logger = logging.getLogger(__name__)

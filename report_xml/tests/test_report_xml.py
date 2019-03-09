@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (https://www.gnuorg/licenses/agpl).
 
 from lxml import etree
+
 from odoo.tests import common
 
 
